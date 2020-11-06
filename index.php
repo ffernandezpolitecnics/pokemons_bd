@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/pokemons/css/flatly-bootstrap.min.css">
 </head>
 <body>
-    <?php include('./partials/menu.php'); ?>
+    <?php include('./php_partials/menu.php'); ?>
 
     <div class="container">
         <div class="jumbotron mt-3">

@@ -1,5 +1,5 @@
 <?php 
-    require('./librarys/bd.php');
+    require('./php_librarys/bd.php');
 
     $pokedex = selectAllPokemons();
     
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./client/tercers/fontawesome-free-5.15.1-web/css/all.min.css">
 </head>
 <body>
-    <?php include_once('./partials/menu.php') ?>
+    <?php include_once('./php_partials/menu.php') ?>
 
     <div class="container-fluid">
         <a id="insertar" href="./pokemon.php" class="position-fixed btn btn-success btn-lg rounded-circle" > <i class="fas fa-plus"></i></a>
@@ -44,11 +44,11 @@
                                 }  ?>
                             </div>
                             <div class="card-footer">
-                               <form action="./controllers/pokemonController.php" method="post" class="float-right ml-1">
+                               <form action="./php_controllers/pokemonController.php" method="post" class="float-right ml-1">
                                     <button type="submit" name="delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
                                     <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
                                 </form>
-                                <form action="./controllers/pokemonController.php" method="post" class="float-right">
+                                <form action="./php_controllers/pokemonController.php" method="post" class="float-right">
                                     <button type="submit" name="edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></button>
                                     <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
                                 </form>

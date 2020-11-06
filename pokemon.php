@@ -1,5 +1,5 @@
 <?php
-    require_once('./librarys/bd.php');
+    require_once('./php_librarys/bd.php');
 
     $regiones = selectAllRegiones();
     $tipos = selectAllTipos();
@@ -26,7 +26,7 @@
     <link rel="shortcut icon" href="./client/media/img/pokeball.png" type="image/x-icon">
 </head>
 <body>
-    <?php require_once('./partials/menu.php'); ?>
+    <?php require_once('./php_partials/menu.php'); ?>
 
     <div class="container">
         <div class="card mt-2">
@@ -35,7 +35,7 @@
                 &nbsp;&nbsp;Pokémon
             </div>
             <div class="card-body">
-                <form action="./controllers/pokemonController.php" method="post" enctype="multipart/form-data">
+                <form action="./php_controllers/pokemonController.php" method="post" enctype="multipart/form-data">
                     <!-- Número de pokémon -->
                     <div class="form-group row">
                         <label for="inputNumero" class="col-sm-2 col-form-label">Número</label>

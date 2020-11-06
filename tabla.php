@@ -9,7 +9,7 @@
 </head>
 <body>
     
-    <?php require_once('./partials/menu.php'); ?>
+    <?php require_once('./php_partials/menu.php'); ?>
 
     <div class="container mt-2">
         <table class="table table-hover table-striped">
