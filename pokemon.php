@@ -7,7 +7,11 @@
     if (isset($_SESSION['pokemon_edit']))
     {
         $pokemon = $_SESSION['pokemon_edit'][0];
+        unset($_SESSION['pokemon_edit']);
     }
+
+
+
 ?>
 
 
@@ -71,7 +75,15 @@
                         <label for="checkTipo" class="col-sm-2 col-form-label">Tipo</label>
                         <div class="col-sm-10 pt-2">
                             <?php  
-                                $tiposPokemon = tiposPokemon($pokemon['id']);
+                                if (isset($pokemon))
+                                {
+                                    $tiposPokemon = tiposPokemon($pokemon['id']);
+                                }
+                                else 
+                                {
+                                    $tiposPokemon = [];
+                                }
+                                
                                 foreach ($tipos as $tipo) { ?>
                                     <div class="custom-control custom-checkbox custom-control-inline">
                                         <?php if (in_array($tipo, $tiposPokemon)) { ?>
@@ -115,7 +127,10 @@
                         <label for="radioEvolucion" class="col-sm-2 col-form-label">Evolución</label>
                         <div class="col-sm-10 pt-2">
                             <div class="custom-control custom-radio custom-control-inline">
-                                <?php if ($pokemon['evolucion'] == "Sin evolucionar") { ?>
+                                <?php if (!isset($pokemon)) {?>
+                                    <input type="radio" id="radioSin" name="radioEvolucion" class="custom-control-input" value="Sin evolucionar" checked>
+                                <?php } ?>
+                                <?php if (isset($pokemon) && $pokemon['evolucion'] == "Sin evolucionar") { ?>
                                     <input type="radio" id="radioSin" name="radioEvolucion" class="custom-control-input" value="Sin evolucionar" checked>
                                 <?php } 
                                     else {?>
@@ -124,7 +139,7 @@
                                 <label class="custom-control-label" for="radioSin">Sin evolucionar</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <?php if ($pokemon['evolucion'] == "Primera evolución") { ?>
+                                <?php if (isset($pokemon) && $pokemon['evolucion'] == "Primera evolución") { ?>
                                     <input type="radio" id="radioPrimera" name="radioEvolucion" class="custom-control-input" value="Primera evolución" checked>
                                 <?php } 
                                     else {?>
@@ -133,7 +148,7 @@
                                 <label class="custom-control-label" for="radioPrimera">Primera evolución</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <?php if ($pokemon['evolucion'] == "Segunda evolución") { ?>
+                                <?php if (isset($pokemon) && $pokemon['evolucion'] == "Segunda evolución") { ?>
                                     <input type="radio" id="radioSegunda" name="radioEvolucion" class="custom-control-input" value="Segunda evolución" checked> 
                                 <?php } 
                                     else {?>
