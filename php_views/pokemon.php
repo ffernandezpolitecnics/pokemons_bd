@@ -1,5 +1,5 @@
 <?php
-    require_once('./php_librarys/bd.php');
+    require_once('../php_librarys/bd.php');
 
     $regiones = selectAllRegiones();
     $tipos = selectAllTipos();
@@ -17,19 +17,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémons</title>
-    <?php require_once('./php_partials/styles.php') ?>
+    <?php require_once('../php_partials/styles.php') ?>
 </head>
 <body>
-    <?php require_once('./php_partials/menu.php'); ?>
+    <?php require_once('../php_partials/menu.php'); ?>
 
     <div class="container">
         <div class="card mt-2">
             <div class="card-header bg-secondary text-white">
-                <img src="./client/media/img/pikachu.png" alt="" height="50" width="50">
+                <img src="../media/img/pikachu.png" alt="" height="50" width="50">
                 &nbsp;&nbsp;Pokémon
             </div>
             <div class="card-body">
-                <form action="./php_controllers/pokemonController.php" method="post" enctype="multipart/form-data">
+                <form action="../php_controllers/pokemonController.php" method="post" enctype="multipart/form-data">
                     <!-- Número de pokémon -->
                     <div class="form-group row">
                         <label for="inputNumero" class="col-sm-2 col-form-label">Número</label>
@@ -175,6 +175,6 @@
     </div>
 </body>
 
-<?php require_once('./php_partials/scripts.php') ?>
+<?php require_once('../php_partials/scripts.php') ?>
 
 </html>

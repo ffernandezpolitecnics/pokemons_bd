@@ -1,5 +1,5 @@
 <?php 
-    require('./php_librarys/bd.php');
+    require('../php_librarys/bd.php');
 
     $pokedex = selectAllPokemons();
     
@@ -11,10 +11,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
-    <?php require_once('./php_partials/styles.php') ?>
+    <?php require_once('../php_partials/styles.php') ?>
 </head>
 <body>
-    <?php include_once('./php_partials/menu.php') ?>
+    <?php include_once('../php_partials/menu.php') ?>
 
     <div class="container-fluid">
         <a id="insertar" href="./pokemon.php" class="position-fixed btn btn-success btn-lg rounded-circle" > <i class="fas fa-plus"></i></a>
@@ -41,11 +41,11 @@
                                 }  ?>
                             </div>
                             <div class="card-footer">
-                               <form action="./php_controllers/pokemonController.php" method="post" class="float-right ml-1">
+                               <form action="../php_controllers/pokemonController.php" method="post" class="float-right ml-1">
                                     <button type="submit" name="delete" class="btn btn-outline-danger"><i class="far fa-trash-alt"></i></button>
                                     <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
                                 </form>
-                                <form action="./php_controllers/pokemonController.php" method="post" class="float-right">
+                                <form action="../php_controllers/pokemonController.php" method="post" class="float-right">
                                     <button type="submit" name="edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></button>
                                     <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
                                 </form>
@@ -59,6 +59,6 @@
 
 </body>
 
-<?php require_once('./php_partials/scripts.php') ?>
+<?php require_once('../php_partials/scripts.php') ?>
 
 </html>

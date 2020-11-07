@@ -19,7 +19,7 @@
 
         insertPokemon($_POST['inputNumero'], $_POST['inputNombre'], $_POST['inputAltura'], $_POST['inputPeso'], $_POST['radioEvolucion'], $name_insert, $_POST['selectRegion'], $_POST['checkTipo']);
 
-        header('Location: ' . '../pokemon_list.php');
+        header('Location: ' . '../php_views/pokemon_list.php');
         exit();
     }
     elseif (isset($_POST['update'])) 
@@ -33,7 +33,7 @@
 
         unlink($pokemon['imagen']);
         
-        header('Location: ' . '../pokemon_list.php');
+        header('Location: ' . '../php_views/pokemon_list.php');
         exit();
     }
     elseif (isset($_POST['edit'])) 
@@ -42,7 +42,7 @@
 
         $_SESSION['pokemon_edit'] = $pokemon;
 
-        header('Location: ' . '../pokemon.php');
+        header('Location: ' . '../php_views/pokemon.php');
         exit();
         
     }

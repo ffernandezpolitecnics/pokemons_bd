@@ -15,7 +15,7 @@
                 <a class="dropdown-item" href="">Regiones</a>
                 <a class="dropdown-item" href="">Tipos de Pokémon</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/pokemons_bd/pokemon_list.php">Pokémons</a>
+                <a class="dropdown-item" href="/pokemons_bd/php_views/pokemon_list.php">Pokémons</a>
             </div>
             </li>
         </ul>
