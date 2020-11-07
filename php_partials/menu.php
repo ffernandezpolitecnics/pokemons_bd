@@ -1,6 +1,6 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="#">
-        <img src="/pokemons/img/pokeball.png" width="30" height="30" alt="" loading="lazy">
+        <img src="/pokemons_bd/media/img/pokeball.png" width="30" height="30" alt="" loading="lazy">
         &nbsp;&nbsp;Pokedex
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
                 <a class="dropdown-item" href="">Regiones</a>
                 <a class="dropdown-item" href="">Tipos de Pokémon</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/pokemons_bd/pokemom_list.php">Pokémons</a>
+                <a class="dropdown-item" href="/pokemons_bd/pokemon_list.php">Pokémons</a>
             </div>
             </li>
         </ul>

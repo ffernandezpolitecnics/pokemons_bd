@@ -9,21 +9,15 @@
         $pokemon = $_SESSION['pokemon_edit'][0];
         unset($_SESSION['pokemon_edit']);
     }
-
-
-
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./client/style/flatly-bootstrap.min.css">
-    <link rel="shortcut icon" href="./client/media/img/pokeball.png" type="image/x-icon">
+    <title>Pokémons</title>
+    <?php require_once('./php_partials/styles.php') ?>
 </head>
 <body>
     <?php require_once('./php_partials/menu.php'); ?>
@@ -172,7 +166,7 @@
                     <div class="float-right">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="submit" class="btn btn-primary" name="insert">Aceptar</button>
-                            <a href="./pokemom_list.php" class="btn btn-secondary">Cancelar</a>
+                            <a href="./pokemon_list.php" class="btn btn-secondary">Cancelar</a>
                         </div>
                     </div>
                 </form>
@@ -181,7 +175,6 @@
     </div>
 </body>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<?php require_once('./php_partials/scripts.php') ?>
 
 </html>

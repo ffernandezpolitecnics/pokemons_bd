@@ -11,10 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
-    <link rel="stylesheet" href="./client/style/flatly-bootstrap.min.css">
-    <link rel="stylesheet" href="./client/style/miCSS.css">
-    <link rel="shortcut icon" href="./client/media/img/pokeball.png" type="image/x-icon">
-    <link rel="stylesheet" href="./client/tercers/fontawesome-free-5.15.1-web/css/all.min.css">
+    <?php require_once('./php_partials/styles.php') ?>
 </head>
 <body>
     <?php include_once('./php_partials/menu.php') ?>
@@ -62,7 +59,6 @@
 
 </body>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<?php require_once('./php_partials/scripts.php') ?>
 
 </html>
