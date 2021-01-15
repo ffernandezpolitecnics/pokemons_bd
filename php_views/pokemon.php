@@ -6,13 +6,18 @@
 
     if (isset($_SESSION['pokemon_edit']))
     {
-        $pokemon = $_SESSION['pokemon_edit'][0];
+        $pokemon = $_SESSION['pokemon_edit'];
         unset($_SESSION['pokemon_edit']);
+    }
+    elseif (isset($_SESSION['pokemon']))
+    {
+        $pokemon = $_SESSION['pokemon'];
+        unset($_SESSION['pokemon']);
     }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +27,10 @@
 <body>
     <?php require_once('../php_partials/menu.php'); ?>
 
-    <div class="container">
+    <div class="container">´
+
+        <?php require_once('../php_partials/mensajes.php') ?>
+
         <div class="card mt-2">
             <div class="card-header bg-secondary text-white">
                 <img src="../media/img/pikachu.png" alt="" height="50" width="50">
@@ -30,6 +38,11 @@
             </div>
             <div class="card-body">
                 <form action="../php_controllers/pokemonController.php" method="post" enctype="multipart/form-data">
+                    <!-- id del pokemon --> 
+                    <?php if (isset($pokemon['id'])) { ?>
+                        <input type="hidden" name="id" value="<?php echo $pokemon['id']; ?>">
+                    <?php } ?>
+                    
                     <!-- Número de pokémon -->
                     <div class="form-group row">
                         <label for="inputNumero" class="col-sm-2 col-form-label">Número</label>
@@ -69,11 +82,15 @@
                         <label for="checkTipo" class="col-sm-2 col-form-label">Tipo</label>
                         <div class="col-sm-10 pt-2">
                             <?php  
-                                if (isset($pokemon))
+                                if (isset($pokemon['id']))
                                 {
                                     $tiposPokemon = tiposPokemon($pokemon['id']);
                                 }
-                                else 
+                                elseif (isset($pokemon)) 
+                                {
+                                    $tiposPokemon = $pokemon['tipos'];
+                                }
+                                else
                                 {
                                     $tiposPokemon = [];
                                 }
@@ -158,14 +175,14 @@
                         <div class="col-sm-10">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="fileLangHTML" name="fileLangHTML">
-                                <label class="custom-file-label" for="fileLangHTML" data-browse="Elegir">Seleccionar Archivo</label>
+                                <label class="custom-file-label" for="fileLangHTML" data-browse="Elegir"></label>
                             </div>
                         </div>
                     </div>
                     <!-- Botones del formulario -->
                     <div class="float-right">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="submit" class="btn btn-primary" name="insert">Aceptar</button>
+                            <button type="submit" class="btn btn-primary" name="<?php if (isset($pokemon['id'])) { echo "update"; } else { echo "insert"; } ?>">Aceptar</button>
                             <a href="./pokemon_list.php" class="btn btn-secondary">Cancelar</a>
                         </div>
                     </div>
@@ -173,6 +190,7 @@
             </div>           
         </div>
     </div>
+
 </body>
 
 <?php require_once('../php_partials/scripts.php') ?>

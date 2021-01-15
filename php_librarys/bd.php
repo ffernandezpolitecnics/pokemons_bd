@@ -86,7 +86,7 @@
 			$sentencia = $conexion->prepare($texto);
 		  	$sentencia->execute();
 		} catch (PDOException $e) {
-			$_SESSION['error'] =  mensajesError($e);
+			$_SESSION['error'] =  errorMessage($e);
 		}
 
 		// Convertimos el resultado en un array asociativo
@@ -109,7 +109,7 @@
 			$sentencia = $conexion->prepare($texto);
 		  	$sentencia->execute();
 		} catch (PDOException $e) {
-			$_SESSION['error'] =  mensajesError($e);
+			$_SESSION['error'] =  errorMessage($e);
 		}
 
 		// Convertimos el resultado en un array asociativo
@@ -132,7 +132,7 @@
 			$sentencia = $conexion->prepare($texto);
 		  	$sentencia->execute();
 		} catch (PDOException $e) {
-			$_SESSION['error'] =  mensajesError($e);
+			$_SESSION['error'] =  errorMessage($e);
 		}
 
 		// Convertimos el resultado en un array asociativo
@@ -157,7 +157,7 @@
 
 		  	$sentencia->execute();
 		} catch (PDOException $e) {
-			$_SESSION['error'] =  mensajesError($e);
+			$_SESSION['error'] =  errorMessage($e);
 		}
 
 		// Convertimos el resultado en un array asociativo
@@ -166,7 +166,7 @@
 		$resultado = $sentencia->fetchAll();
 		  
 		$conexion = cerrarConexion();
-	  	return $resultado;
+	  	return $resultado[0];
 	}
 
 	//Devuelve los tipos de un pokemon.
@@ -182,7 +182,7 @@
 			
 		  	$sentencia->execute();
 		} catch (PDOException $e) {
-			$_SESSION['error'] =  mensajesError($e);
+			$_SESSION['error'] =  errorMessage($e);
 		}
 
 		// $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -230,9 +230,16 @@
 		catch (PDOException $e)
 		{
 			$_SESSION['error'] = errorMessage($e);
-			$ciudad['id_ciudad'] = $id_ciudad;
-			$ciudad['nombre'] = $nombre;
-			$_SESSION['ciudad'] = $ciudad;
+			$pokemon['numero'] = $numero;
+			$pokemon['nombre'] = $nombre;
+			$pokemon['altura'] = $altura;
+			$pokemon['peso'] = $peso;
+			$pokemon['evolucion'] = $evolucion;
+			$pokemon['imagen'] = $imagen;
+			$pokemon['regiones_id'] = $region;
+			$pokemon['tipos'] = $tipos;
+
+			$_SESSION['pokemon'] = $pokemon;
 		}
 
 		//Cerramos la conexión
@@ -247,19 +254,12 @@
 			// Abrimos la conexión
 			$conexion = abrirConexion();
 
-			// $conexion->beginTransaction();
-			//Tenemos que borrar primero los tipos
-			// $sentencia = $conexion->prepare("delete from tipos_has_pokemons where pokemons_id = :id");
-			// $sentencia->bindParam(':id', $id);
-			// $sentencia->execute();
-
 			//Preparamos la sentencia a ejecutar
 			$sentencia = $conexion->prepare("delete from pokemons where id = :id");
 			$sentencia->bindParam(':id', $id);
 
 			//Ejecutamos la sentencia
 			$sentencia->execute();
-			// $conexion->commit();
 
 			$_SESSION['mensaje'] = 'Registro borrado correctamente';
 		}
@@ -281,13 +281,22 @@
 
 			$conexion->beginTransaction();
 			//Preparamos la sentencia a ejecutar
-			$sentencia = $conexion->prepare("update pokemons set numero = :numero, nombre = :nombre, altura = :altura, peso = :peso, evolucion = :evolucion, imagen = :imagen, regiones_id = :regiones_id where id = :id");
+			if ($imagen == "")
+			{
+				$sentencia = $conexion->prepare("update pokemons set numero = :numero, nombre = :nombre, altura = :altura, peso = :peso, evolucion = :evolucion, regiones_id = :regiones_id where id = :id");
+			}
+			else 
+			{
+				$sentencia = $conexion->prepare("update pokemons set numero = :numero, nombre = :nombre, altura = :altura, peso = :peso, evolucion = :evolucion, imagen = :imagen, regiones_id = :regiones_id where id = :id");
+				$sentencia->bindParam(':imagen', $imagen);
+			}
+			
 			$sentencia->bindParam(':numero', $numero);
 			$sentencia->bindParam(':nombre', $nombre);
 			$sentencia->bindParam(':altura', $altura);
 			$sentencia->bindParam(':peso', $peso);
 			$sentencia->bindParam(':evolucion', $evolucion);
-			$sentencia->bindParam(':imagen', $imagen);
+			
 			$sentencia->bindParam(':regiones_id', $region);
 			$sentencia->bindParam(':id', $id);
 			
@@ -310,7 +319,7 @@
 
 			$conexion->commit();
 
-			$_SESSION['mensaje'] = 'Registro insertado correctamente';
+			$_SESSION['mensaje'] = 'Registro modificado correctamente';
 		}
 		catch (PDOException $e)
 		{

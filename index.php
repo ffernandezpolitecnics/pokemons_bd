@@ -1,5 +1,3 @@
-<?php require_once('pokedex.php'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

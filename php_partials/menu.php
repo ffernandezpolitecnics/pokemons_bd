@@ -12,9 +12,9 @@
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Datos maestros</a>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="">Regiones</a>
+                <!-- <a class="dropdown-item" href="">Regiones</a>
                 <a class="dropdown-item" href="">Tipos de Pokémon</a>
-                <div class="dropdown-divider"></div>
+                <div class="dropdown-divider"></div> -->
                 <a class="dropdown-item" href="/pokemons_bd/php_views/pokemon_list.php">Pokémons</a>
             </div>
             </li>
